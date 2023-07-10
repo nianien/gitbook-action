@@ -601,7 +601,7 @@ if [ ${INPUT_SOURCE2_REPO} != "null" ]; then
       print_info "Message:Source2 time set success"
     fi
 
-    if [ ${INPUT_SOURCE2_FILE_WITHOUT_PREFIX} = "true" ] ; then  # defaule true, remove file without name like .nojekyll, may cause some error
+    if [ ${INPUT_SOURCE2_FILE_WITHOUT_PREFIX} = "true" ] ; then  # default true, remove file without name like .nojekyll, may cause some error
       rm -rf local_source2_temp/${INPUT_SOURCE2_DIR}/.git  # remove the .git in source if exists
       cp -rfp local_source2_temp/${INPUT_SOURCE2_DIR}/.  local_source 
     else
@@ -745,6 +745,15 @@ else  # need plugins or README.md SUMMARY.md
   fi
 fi
 
+#mv .gitbook/assets to gitbook/assets
+
+for file in $(find . -name '*.html'); do
+  echo "$file"
+  sed -i "" "s|.gitbook/assets/|gitbook/assets/|" "$file"
+done
+if [ -d "_book/.gitbook/assets" ]; then
+    mv "_book/.gitbook/assets" "_book/gitbook/assets"
+fi
 
 
 # gitbook pdf
