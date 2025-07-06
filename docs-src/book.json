@@ -4,6 +4,7 @@
   "description": "Gitbook-Action",
   "gitbook": "3.2.3",
   "plugins": [
+    "-hint",
     "-lunr",
     "-search",
     "-sharing",
