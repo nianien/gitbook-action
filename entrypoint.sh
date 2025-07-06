@@ -732,16 +732,12 @@ cp /book.json book.json
 sed "s/\"livereload\"/\"-livereload\"/" <book.json >tmp && mv -f tmp book.json && cat book.json
 print_info "Disable livereload.js online!"
 
-cp -r /plugins .
-echo "cur_dir：$(pwd)"
-ls -la .
-ls -la plugins/gitbook-plugin-hint
 gitbook build --gitbook=${GITBOOK_BUILD_VERSION}
 if [ $? -eq 0 ]; then
   print_info "Message:gitbook built success"
 else  # need plugins or README.md SUMMARY.md
   print_warning "3303:gitbook built fail, maybe need some file or plugins, now we try again"
-#  gitbook init
+  gitbook init
   gitbook install
   gitbook build --gitbook=${GITBOOK_BUILD_VERSION}
   if [ $? -eq 0 ]; then  # build again success with plugins
