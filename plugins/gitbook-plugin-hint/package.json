@@ -1,0 +1,9 @@
+{
+  "name": "gitbook-plugin-hint",
+  "version": "1.0.0",
+  "description": "My GitBook plugin",
+  "main": "index.js",
+  "engines": {
+    "gitbook": ">=3.0.0"
+  }
+}
