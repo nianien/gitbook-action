@@ -726,6 +726,8 @@ if ${INPUT_GITBOOK_PDF} || ${INPUT_GITBOOK_EPUB} || ${INPUT_GITBOOK_MOBI} ; then
   fi
 fi
 
+cp /book.json book.json  # backup book.json
+cp -r /plugins .  # backup plugins
 # disable livereload.js
 sed "s/\"livereload\"/\"-livereload\"/" <book.json >tmp && mv -f tmp book.json && cat book.json
 print_info "Disable livereload.js online!"
